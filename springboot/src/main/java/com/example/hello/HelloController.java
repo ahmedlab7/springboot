@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController //bir rest servisi olacağını belirliyor.
 public class HelloController {
 
-    @RequestMapping
+    @RequestMapping("/hello")
     public String sayHello(){
 
-        return "Hello";
+        return "Hello, Manners maketh man";
     }
 
 }
