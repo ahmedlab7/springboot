@@ -1,27 +1,42 @@
-package com.alikatircio.topic;
+package com.alikatircio.course;
+
+import com.alikatircio.topic.Topic;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by ali on 11.12.2017.
  */
 
 @Entity //model
-public class Topic {
+public class Course {
 
     @Id
     private String id;
     private String name;
     private String description;
 
-    public Topic(String id, String name, String description) {
+    @ManyToOne
+    private Topic topic;
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
+    }
+
+    public Course(String id, String name, String description, String topicId) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.topic = new Topic(topicId, "", "");
     }
 
-    public Topic() {
+    public Course() {
     }
 
     public String getId() {

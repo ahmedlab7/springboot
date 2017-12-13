@@ -1,10 +1,9 @@
-package com.alikatircio.topic;
+package com.alikatircio.course;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,10 +11,10 @@ import java.util.List;
  */
 
 @Service
-public class TopicService {
+public class CourseService {
 
     @Autowired
-    private TopicRepository topicRepository;
+    private CourseRepository courseRepository;
 
     /*private List<Course> topics = new ArrayList<Course>(Arrays.asList(
         new Course("spring", "spring framework", "Spring framework description"),
@@ -23,17 +22,17 @@ public class TopicService {
         new Course("javascript", "Javascript", "javascript  description")
         ));*/
 
-    public List<Topic> getAllTopics(){
+    public List<Course> getAllCourses(String topicId){
 
-        //return topics;
-        List<Topic> topics = new ArrayList<>();
-        topicRepository.findAll()
-                .forEach(topics::add);
-        return topics;
+        //return courses;
+        List<Course> courses = new ArrayList<>();
+        courseRepository.findByTopicId(topicId)
+                .forEach(courses::add);
+        return courses;
 
     }
 
-    public Topic getTopic(String id){
+    public Course getCourse(String id){
         /*for(Course topic : topics){
             if(topic.getId().equals(id)){
                 return topic;
@@ -41,16 +40,16 @@ public class TopicService {
         }
         return null;*/
 
-        return topicRepository.findOne(id);
+        return courseRepository.findOne(id);
     }
 
-    public void addTopic(Topic topic) {
+    public void addCourse(Course course) {
 
         //topics.add(topic);
-        topicRepository.save(topic);
+        courseRepository.save(course);
     }
 
-    public void updateTopic(String id, Topic topic) {
+    public void updateCourse(Course topic) {
 
         /*for (int i = 0; i<topics.size(); i++){
 
@@ -62,10 +61,10 @@ public class TopicService {
             }
         }*/
 
-        topicRepository.save(topic);
+        courseRepository.save(topic);
     }
 
-    public void deleteTopic(String id) {
+    public void deleteCourse(String id) {
 
         /*for (int i = 0; i<topics.size(); i++){
 
@@ -75,6 +74,6 @@ public class TopicService {
             }
         }*/
 
-        topicRepository.delete(id);
+        courseRepository.delete(id);
     }
 }
