@@ -45,23 +45,23 @@ public class CourseService {
 
     public void addCourse(Course course) {
 
-        //topics.add(topic);
+        //topics.add(course);
         courseRepository.save(course);
     }
 
-    public void updateCourse(Course topic) {
+    public void updateCourse(Course course) {
 
         /*for (int i = 0; i<topics.size(); i++){
 
             Course t = topics.get(i);
             if(t.getId().equals(id)){
 
-                topics.set(i, topic);
+                topics.set(i, course);
                 return;
             }
         }*/
 
-        courseRepository.save(topic);
+        courseRepository.save(course);
     }
 
     public void deleteCourse(String id) {

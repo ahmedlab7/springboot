@@ -21,6 +21,13 @@ public class Course {
     @ManyToOne
     private Topic topic;
 
+    public Course(String id, String name, String description, String topicId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.topic = new Topic(topicId, "","");
+    }
+
     public Topic getTopic() {
         return topic;
     }
@@ -29,14 +36,8 @@ public class Course {
         this.topic = topic;
     }
 
-    public Course(String id, String name, String description, String topicId) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.topic = new Topic(topicId, "", "");
-    }
-
     public Course() {
+
     }
 
     public String getId() {
